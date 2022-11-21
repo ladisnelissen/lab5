@@ -17,7 +17,7 @@ app.use(cors({
 app.set('view engine', 'jade');
 
 app.use('/', indexRouter)
-app.use('/api/v1/messages', routerMessages)
+app.use('/message', routerMessages)
 
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`)
