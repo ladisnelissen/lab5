@@ -23,7 +23,16 @@ const getById = (req, res) => {
     const response = {
         status: 'success',
         message: `GETTING message with id ${id}`,
-        data: { user: 'John', message: 'Hello' },
+        data: { id: id, user: 'John', message: 'Hello' } 
+    }
+    res.json(response);
+};
+
+const create = (req, res) => {
+    const response = {
+        status: 'success',
+        message: 'CREATING new message',
+        data: { user: req.body.user, message: req.body.message }
     }
     res.json(response);
 };
