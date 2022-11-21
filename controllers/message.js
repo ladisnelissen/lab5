@@ -57,4 +57,11 @@ const deleteById = (req, res) => {
     res.json(response);
 }
 
+module.exports = {
+    getAll,
+    getById,
+    create,
+    update,
+    deleteById
+}
 
