@@ -1,42 +1,19 @@
-const Message = require('../models/message');
-
-const getMessage = (req, res) => {
-    let messages = Message.find({}, (err, messages) => {
-        if (err) {
-            let result = {
-                status: 'error',
-                message: "error getting messages"
-            };
-            
-        } else {
-            res.status(200).send(messages);
+const getAll = (req, res) => {
+    // check for query user
+    if (req.query.user) {
+        const user = req.query.user;
+        const response = {
+            status: 'success',
+            message: `GETTING messages for user ${user}`,
+            data: { user: user, message: 'Hello' }
         }
-    });
-};
-
-const createMessage = (req, res) => {
-    const content = req.body.content;
-    const user = req.userId;
-    const message = new Message({
-        content: content,
-        user: user
-    });
-    message.save()
-        .then(result => {
-            res.status(201).json({
-                message: 'Message created successfully!',
-                message: result
-            });
-        })
-        .catch(err => {
-            if (!err.statusCode) {
-                err.statusCode = 500;
-            }
-            next(err);
-        });
-}
-
-module.exports = {
-    getMessage: getMessage,
-    createMessage: createMessage
+        res.json(response);
+    } else {
+        const response = {
+            status: 'success',
+            message: 'GETTING all messages',
+            data: [{ user: 'John', message: 'Hello' }, { user: 'Jane', message: 'Hi' }]
+        }
+        res.json(response);
+    }
 };
