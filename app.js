@@ -1,7 +1,7 @@
 const express = require('express')
 const app = express()
 const port = 3000
-const apiV1Messages = require('./routers/message.js')
+const routerMessages = require('./routers/messages.js')
 const indexRouter = require('./routers/index')
 const cors = require('cors')
 
@@ -15,8 +15,8 @@ app.use(cors({
 
 app.set('view engine', 'jade');
 
-app.use('/', indexRouter)
-app.use('/api/v1/messages', apiV1Messages)
+app.use('/', router)
+app.use('/message', routerMessages)
 
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`)

@@ -6,7 +6,7 @@ const getAll = (req, res) => {
             "message": `GETTING messages for  username ${req.query.user}`,
             "data": {
                 "user": req.query.user,
-                "message": "It's just me"
+                "message": "Hey, it's me"
             }
         });
     } else {
