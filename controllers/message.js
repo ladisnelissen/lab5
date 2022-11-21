@@ -1,67 +1,98 @@
 const getAll = (req, res) => {
-    // check for query user
+    // get user from url
     if (req.query.user) {
-        const user = req.query.user;
-        const response = {
-            status: 'success',
-            message: `GETTING messages for user ${user}`,
-            data: { user: user, message: 'Hello' }
-        }
-        res.json(response);
+        res.json({
+            "status": "success",
+            "message": `GETTING messages for  username ${req.query.user}`,
+            "data": {
+                "user": req.query.user,
+                "message": "It's just me"
+            }
+        });
     } else {
-        const response = {
-            status: 'success',
-            message: 'GETTING all messages',
-            data: [{ user: 'John', message: 'Hello' }, { user: 'Jane', message: 'Hi' }]
+        res.json({
+            "status": "success",
+            "message": "GETTING messages",
+            "data": {
+                "messages": [{
+                "user": "John",
+                "message": "Hello"
+            },
+            {
+                "user": "Jane",
+                "message": "Hi"
+            }]
         }
-        res.json(response);
+    });
     }
-};
+}
 
-const getById = (req, res) => {
+const getId = (req, res) => {
     const id = req.params.id;
-    const response = {
-        status: 'success',
+    let result = {
+        status: "success",
         message: `GETTING message with id ${id}`,
-        data: { id: id, user: 'John', message: 'Hello' } 
-    }
-    res.json(response);
+        data: {
+            messages: [
+                {
+                    "user" : "Lauren",
+                    "message" : "It's just me"
+                }
+            ]
+        }
+    };
+    res.json(result);
 };
 
 const create = (req, res) => {
-    const response = {
-        status: 'success',
-        message: 'CREATING new message',
-        data: { user: req.body.user, message: req.body.message }
-    }
-    res.json(response);
+    const result = {
+        status: "success",
+        message: "POSTING a new message for user Lauren",
+        data: {
+            messages: [
+                {
+                    "user" : "Lauren",
+                    "message" : "It's just me"
+                }
+            ]
+        }
+    };
+    res.json(result);
 };
 
 const update = (req, res) => {
+    // get id from url
     const id = req.params.id;
-    const response = {
-        status: 'success',
-        message: `UPDATING message with id ${id}`,
-        data: { id: id, user: req.body.user, message: req.body.message }
-    }
-    res.json(response);
+    res.json({
+        "status": "success",
+        "message": "UPDATING message with id " + id,
+        "data": {
+            "messages": [{
+                "user": "John",
+                "message": "Correcting my message"
+            }
+            ]
+        }
+    })
 }
 
-const deleteById = (req, res) => {
+const remove = (req, res) => {
+    // get id from url
     const id = req.params.id;
-    const response = {
-        status: 'success',
-        message: `DELETING message with id ${id}`,
-        data: { id: id }
-    }
-    res.json(response);
+    res.json({
+        "status": "success",
+        "message": "DELETING message with id " + id,
+        "data": {
+            "messages": [{
+                "message": "Message deleted"
+            }
+            ]
+        }
+    })
 }
 
-module.exports = {
-    getAll,
-    getById,
-    create,
-    update,
-    deleteById
-}
-
+module.exports.getAll = getAll
+module.exports.getId = getId
+module.exports.create = create
+module.exports.update = update
+module.exports.remove = remove
