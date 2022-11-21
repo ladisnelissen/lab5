@@ -6,7 +6,7 @@ var logger = require('morgan');
 var cors = require('cors')
 
 var indexRouter = require('./routes/index');
-var messagesRouter = require('./routes/messages');
+var messagesRouter = require('./routes/message');
 
 var app = express();
 
@@ -39,5 +39,11 @@ app.use(function (err, req, res, next) {
   res.status(err.status || 500);
   res.render('error');
 });
+
+//listen on port 3000
+app.listen(3000, () => {
+  console.log('Server started on port 3000');
+});
+
 
 module.exports = app;
