@@ -17,3 +17,13 @@ const getAll = (req, res) => {
         res.json(response);
     }
 };
+
+const getById = (req, res) => {
+    const id = req.params.id;
+    const response = {
+        status: 'success',
+        message: `GETTING message with id ${id}`,
+        data: { user: 'John', message: 'Hello' },
+    }
+    res.json(response);
+};
