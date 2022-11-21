@@ -35,7 +35,7 @@ const getId = (req, res) => {
         data: {
             messages: [
                 {
-                    "user" : "Lauren",
+                    "user" : "Ladis",
                     "message" : "It's just me"
                 }
             ]
@@ -47,11 +47,11 @@ const getId = (req, res) => {
 const create = (req, res) => {
     const result = {
         status: "success",
-        message: "POSTING a new message for user Lauren",
+        message: "POSTING a new message for user Ladis",
         data: {
             messages: [
                 {
-                    "user" : "Lauren",
+                    "user" : "Ladis",
                     "message" : "It's just me"
                 }
             ]

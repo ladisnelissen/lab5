@@ -1,8 +1,7 @@
 const express = require('express')
 const app = express()
 const port = 3000
-const logger = require('./middleware/logger')
-const apiV1Messages = require('./routers/api/v1/messages')
+const apiV1Messages = require('./routers/message.js')
 const indexRouter = require('./routers/index')
 const cors = require('cors')
 
